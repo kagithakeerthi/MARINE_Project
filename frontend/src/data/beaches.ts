@@ -230,16 +230,20 @@ export const WORLDWIDE_BEACHES = [
   { id: 'beach_181', name: 'Colombo Beach', city: 'Colombo, Sri Lanka', country: 'Sri Lanka', lat: 6.9271, lon: 80.7780, area: 30, riskLevel: 'high', region: 'Asia' },
   { id: 'beach_182', name: 'Maldives Beach', city: 'Male, Maldives', country: 'Maldives', lat: 4.1755, lon: 73.5093, area: 20, riskLevel: 'critical', region: 'Asia' },
   { id: 'beach_183', name: 'Sentosa Beach', city: 'Singapore', country: 'Singapore', lat: 1.2495, lon: 103.8299, area: 12, riskLevel: 'medium', region: 'Asia' },
+  { id: 'beach_184', name: 'RK Beach', city: 'Visakhapatnam, Andhra Pradesh', country: 'India', lat: 17.6869, lon: 83.2185, area: 18, riskLevel: 'high', region: 'Asia' },
+  { id: 'beach_185', name: 'Rushikonda Beach', city: 'Visakhapatnam, Andhra Pradesh', country: 'India', lat: 17.7749, lon: 83.3065, area: 22, riskLevel: 'high', region: 'Asia' },
+  { id: 'beach_186', name: 'Yarada Beach', city: 'Visakhapatnam, Andhra Pradesh', country: 'India', lat: 17.5869, lon: 83.3185, area: 15, riskLevel: 'high', region: 'Asia' },
+  { id: 'beach_187', name: 'Vizag Port Beach', city: 'Visakhapatnam, Andhra Pradesh', country: 'India', lat: 17.6666, lon: 83.2202, area: 25, riskLevel: 'critical', region: 'Asia' },
 
   // OCEANIA - Beaches
-  { id: 'beach_184', name: 'Bondi Beach', city: 'Sydney, Australia', country: 'Australia', lat: -33.8891, lon: 151.2768, area: 8, riskLevel: 'low', region: 'Oceania' },
-  { id: 'beach_185', name: 'Gold Coast Beach', city: 'Gold Coast, Australia', country: 'Australia', lat: -28.0029, lon: 153.4311, area: 60, riskLevel: 'low', region: 'Oceania' },
-  { id: 'beach_186', name: 'Manly Beach', city: 'Sydney, Australia', country: 'Australia', lat: -33.7969, lon: 151.2870, area: 12, riskLevel: 'low', region: 'Oceania' },
-  { id: 'beach_187', name: 'Great Barrier Reef Coast', city: 'Queensland, Australia', country: 'Australia', lat: -16.2859, lon: 145.7781, area: 380, riskLevel: 'critical', region: 'Oceania' },
-  { id: 'beach_188', name: 'Cairns Beach', city: 'Cairns, Australia', country: 'Australia', lat: -16.8731, lon: 145.7781, area: 25, riskLevel: 'high', region: 'Oceania' },
-  { id: 'beach_189', name: 'Byron Bay Beach', city: 'Byron Bay, Australia', country: 'Australia', lat: -28.6436, lon: 153.6149, area: 15, riskLevel: 'low', region: 'Oceania' },
-  { id: 'beach_190', name: 'Bora Bora Beach', city: 'French Polynesia', country: 'France', lat: -16.5004, lon: -151.7415, area: 35, riskLevel: 'medium', region: 'Oceania' },
-  { id: 'beach_191', name: 'Tahiti Beach', city: 'Tahiti, French Polynesia', country: 'France', lat: -17.6509, lon: -149.4260, area: 30, riskLevel: 'low', region: 'Oceania' },
+  { id: 'beach_188', name: 'Bondi Beach', city: 'Sydney, Australia', country: 'Australia', lat: -33.8891, lon: 151.2768, area: 8, riskLevel: 'low', region: 'Oceania' },
+  { id: 'beach_189', name: 'Gold Coast Beach', city: 'Gold Coast, Australia', country: 'Australia', lat: -28.0029, lon: 153.4311, area: 60, riskLevel: 'low', region: 'Oceania' },
+  { id: 'beach_190', name: 'Manly Beach', city: 'Sydney, Australia', country: 'Australia', lat: -33.7969, lon: 151.2870, area: 12, riskLevel: 'low', region: 'Oceania' },
+  { id: 'beach_191', name: 'Great Barrier Reef Coast', city: 'Queensland, Australia', country: 'Australia', lat: -16.2859, lon: 145.7781, area: 380, riskLevel: 'critical', region: 'Oceania' },
+  { id: 'beach_192', name: 'Cairns Beach', city: 'Cairns, Australia', country: 'Australia', lat: -16.8731, lon: 145.7781, area: 25, riskLevel: 'high', region: 'Oceania' },
+  { id: 'beach_193', name: 'Byron Bay Beach', city: 'Byron Bay, Australia', country: 'Australia', lat: -28.6436, lon: 153.6149, area: 15, riskLevel: 'low', region: 'Oceania' },
+  { id: 'beach_194', name: 'Bora Bora Beach', city: 'French Polynesia', country: 'France', lat: -16.5004, lon: -151.7415, area: 35, riskLevel: 'medium', region: 'Oceania' },
+  { id: 'beach_195', name: 'Tahiti Beach', city: 'Tahiti, French Polynesia', country: 'France', lat: -17.6509, lon: -149.4260, area: 30, riskLevel: 'low', region: 'Oceania' },
 ];
 
 export type WaterbodyType = 'Ocean' | 'Lake' | 'River';
