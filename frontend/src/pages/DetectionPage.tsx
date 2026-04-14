@@ -13,10 +13,36 @@ import {
 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
 
+type DebrisCompositionItem = {
+  name: string;
+  value: number;
+  color: string;
+};
+
+type DetectionData = {
+  debrisCount: number;
+  coveragePercentage: number;
+  confidence: number;
+  composition: DebrisCompositionItem[];
+  debris_count?: number;
+  coverage_percentage?: number;
+  error?: false;
+  message?: undefined;
+  mockData?: undefined;
+};
+
+type DetectionResult = DetectionData | {
+  error: true;
+  message: string;
+  mockData: DetectionData;
+  debris_count?: number;
+  coverage_percentage?: number;
+};
+
 const DetectionPage: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<DetectionResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -70,7 +96,7 @@ const DetectionPage: React.FC = () => {
 
       if (!response.ok) throw new Error('Detection failed');
 
-      const data = await response.json();
+      const data = (await response.json()) as DetectionData;
       setResult(data);
     } catch (error) {
       console.error('Detection error:', error);
@@ -104,7 +130,7 @@ const DetectionPage: React.FC = () => {
     }
   };
 
-  const mockResults = result?.mockData || result;
+  const mockResults = result && 'mockData' in result ? result.mockData : result;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
@@ -338,7 +364,7 @@ const DetectionPage: React.FC = () => {
                             outerRadius={80}
                             label={({ name, value }) => `${name}: ${value}%`}
                           >
-                            {(mockResults?.composition || []).map((entry: any, index: number) => (
+                            {(mockResults?.composition || []).map((entry: DebrisCompositionItem, index: number) => (
                               <Cell key={`cell-${index}`} fill={entry.color} />
                             ))}
                           </Pie>

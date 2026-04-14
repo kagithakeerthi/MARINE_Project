@@ -92,6 +92,16 @@ class WaveService:
             "source": "simulated"
         }
     
+    def get_wave_data_sync(
+        self,
+        lat: float,
+        lon: float
+    ) -> Dict:
+        """
+        Synchronous version for basic services
+        """
+        return self._generate_simulated_data(lat, lon)
+    
     async def get_forecast(
         self,
         lat: float,

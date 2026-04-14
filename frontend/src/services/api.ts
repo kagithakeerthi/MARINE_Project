@@ -100,7 +100,7 @@ export const waveApi = {
 
 // Risk Assessment APIs
 export const riskApi = {
-  assess: async (lat: number, lon: number, debrisData?: any) => {
+  assess: async (lat: number, lon: number, debrisData?: Record<string, unknown> | null) => {
     const response = await api.post(
       `/risk/assess?lat=${lat}&lon=${lon}`,
       debrisData

@@ -26,12 +26,13 @@ import {
   BarChart,
   Bar,
 } from 'recharts';
+import type { Beach } from '../data/beaches';
 import { WORLDWIDE_BEACHES, generateSatelliteDebrisData, getGlobalStats, getAllRegions, getBeachesByRegion, getAllWaterbodyTypes, getWaterbodyType } from '../data/beaches';
 
 
 export const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedBeach, setSelectedBeach] = useState<any>(null);
+  const [selectedBeach, setSelectedBeach] = useState<Beach | null>(null);
   const [selectedRegion, setSelectedRegion] = useState<string>('All Regions');
   const [selectedType, setSelectedType] = useState<string>('All Types');
   const [sortBy, setSortBy] = useState<'name' | 'risk' | 'area'>('risk');
@@ -54,8 +55,8 @@ export const Dashboard = () => {
       result = result.filter(
         (beach) =>
           beach.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          beach.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          beach.country.toLowerCase().includes(searchQuery.toLowerCase())
+          beach.city?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          beach.country?.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
@@ -75,7 +76,7 @@ export const Dashboard = () => {
   // Get suggestions only when search is active
   const suggestions = useMemo(() => {
     if (!searchQuery.trim()) return [];
-    return filteredBeaches.slice(0, 8);
+    return filteredBeaches;
   }, [searchQuery, filteredBeaches]);
 
   const satelliteData = selectedBeach ? generateSatelliteDebrisData(selectedBeach.id) : null;
@@ -96,13 +97,13 @@ export const Dashboard = () => {
   };
 
   const getRiskBadge = (risk: string) => {
-    const colors: any = {
+    const colors: Record<'critical' | 'high' | 'medium' | 'low', string> = {
       critical: 'bg-red-500/20 text-red-200 border-red-500/30',
       high: 'bg-orange-500/20 text-orange-200 border-orange-500/30',
       medium: 'bg-yellow-500/20 text-yellow-200 border-yellow-500/30',
       low: 'bg-green-500/20 text-green-200 border-green-500/30',
     };
-    return colors[risk] || 'bg-blue-500/20 text-blue-200 border-blue-500/30';
+    return colors[risk as keyof typeof colors] || 'bg-blue-500/20 text-blue-200 border-blue-500/30';
   };
 
   return (
@@ -228,7 +229,7 @@ export const Dashboard = () => {
                       outerRadius={100}
                       label={({ name, value }) => `${name}: ${value}%`}
                     >
-                      {satelliteData?.composition?.map((entry: any, index: number) => (
+                      {satelliteData?.composition?.map((entry: { color: string }, index: number) => (
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
@@ -384,7 +385,7 @@ export const Dashboard = () => {
                 <div className="flex-1 min-w-[150px]">
                   <select
                     value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as any)}
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSortBy(e.target.value as 'risk' | 'name' | 'area')}
                     className="w-full bg-gradient-to-r from-slate-800 to-slate-700 border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500/50 transition"
                   >
                     <option value="risk" className="bg-slate-800">Sort by Risk Level</option>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Leaf,
@@ -13,15 +13,42 @@ import {
   Droplet,
 } from 'lucide-react';
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
+import type { Beach } from '../data/beaches';
 import { WORLDWIDE_BEACHES } from '../data/beaches';
 
-const EcosystemPage: React.FC = () => {
-  const [selectedBeach, setSelectedBeach] = useState(WORLDWIDE_BEACHES[0]);
-  const [timeRange, setTimeRange] = useState<'7d' | '30d' | '90d'>('30d');
-  const [ecosystemData, setEcosystemData] = useState<any>(null);
+type EcosystemSeries = {
+  date: string;
+  waterQuality: number;
+  biodiversity: number;
+  coralHealth: number;
+  temperature: number;
+  salinity: number;
+  turbidity: number;
+};
 
-  useEffect(() => {
-    // Generate mock ecosystem data
+type EcosystemAlert = {
+  type: 'warning' | 'info' | 'success';
+  message: string;
+  severity: 'low' | 'medium' | 'high';
+};
+
+type EcosystemData = {
+  timeSeries: EcosystemSeries[];
+  current: Omit<EcosystemSeries, 'date'>;
+  healthScore: number;
+  trends: {
+    waterQuality: 'up' | 'down';
+    biodiversity: 'up' | 'down';
+    coralHealth: 'up' | 'down';
+  };
+  alerts: EcosystemAlert[];
+};
+
+const EcosystemPage: React.FC = () => {
+  const [selectedBeach, setSelectedBeach] = useState<Beach>(WORLDWIDE_BEACHES[0]);
+  const [timeRange, setTimeRange] = useState<'7d' | '30d' | '90d'>('30d');
+
+  const ecosystemData = useMemo<EcosystemData>(() => {
     const generateEcosystemData = () => {
       const days = timeRange === '7d' ? 7 : timeRange === '30d' ? 30 : 90;
       const data = Array.from({ length: days }, (_, i) => {
@@ -54,25 +81,27 @@ const EcosystemPage: React.FC = () => {
          currentMetrics.coralHealth * 0.4) / 10
       );
 
+      const trends: EcosystemData['trends'] = {
+        waterQuality: data[data.length - 1].waterQuality > data[data.length - 8]?.waterQuality ? 'up' : 'down',
+        biodiversity: data[data.length - 1].biodiversity > data[data.length - 8]?.biodiversity ? 'up' : 'down',
+        coralHealth: data[data.length - 1].coralHealth > data[data.length - 8]?.coralHealth ? 'up' : 'down',
+      };
+
       return {
         timeSeries: data,
         current: currentMetrics,
         healthScore,
-        trends: {
-          waterQuality: data[data.length - 1].waterQuality > data[data.length - 8]?.waterQuality ? 'up' : 'down',
-          biodiversity: data[data.length - 1].biodiversity > data[data.length - 8]?.biodiversity ? 'up' : 'down',
-          coralHealth: data[data.length - 1].coralHealth > data[data.length - 8]?.coralHealth ? 'up' : 'down',
-        },
+        trends,
         alerts: [
-          { type: 'warning', message: 'Coral bleaching risk increased by 15%', severity: 'medium' },
-          { type: 'info', message: 'Biodiversity index stable', severity: 'low' },
-          { type: 'success', message: 'Water quality improved by 8%', severity: 'low' },
+          { type: 'warning' as const, message: 'Coral bleaching risk increased by 15%', severity: 'medium' as const },
+          { type: 'info' as const, message: 'Biodiversity index stable', severity: 'low' as const },
+          { type: 'success' as const, message: 'Water quality improved by 8%', severity: 'low' as const },
         ],
       };
     };
 
-    setEcosystemData(generateEcosystemData());
-  }, [selectedBeach, timeRange]);
+    return generateEcosystemData();
+  }, [timeRange]);
 
   const getHealthColor = (score: number) => {
     if (score >= 8) return 'text-green-400';
@@ -247,7 +276,7 @@ const EcosystemPage: React.FC = () => {
                 </h3>
 
                 <div className="space-y-3">
-                  {ecosystemData.alerts.map((alert: any, i: number) => (
+                  {ecosystemData.alerts.map((alert: EcosystemAlert, i: number) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, x: -10 }}

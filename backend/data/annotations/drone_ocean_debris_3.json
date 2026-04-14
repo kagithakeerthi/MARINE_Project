@@ -1,0 +1,189 @@
+{
+  "image": {
+    "filename": "drone_ocean_debris_3.png",
+    "width": 1920,
+    "height": 1080,
+    "timestamp": "2026-04-05T09:24:19.048744",
+    "location": {
+      "latitude": 13.77227,
+      "longitude": -60.784578,
+      "description": "Coastal area near Florida Keys"
+    }
+  },
+  "annotations": [
+    {
+      "id": "annotation_1",
+      "type": "bounding_box",
+      "class": "metal_can",
+      "bbox": [
+        179,
+        534,
+        208,
+        583
+      ],
+      "confidence": 0.904,
+      "area": 1421,
+      "attributes": {
+        "size": "large",
+        "material": "metal",
+        "severity": "high"
+      }
+    },
+    {
+      "id": "annotation_2",
+      "type": "bounding_box",
+      "class": "metal_can",
+      "bbox": [
+        484,
+        779,
+        557,
+        837
+      ],
+      "confidence": 0.917,
+      "area": 4234,
+      "attributes": {
+        "size": "large",
+        "material": "organic",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_3",
+      "type": "bounding_box",
+      "class": "cloth",
+      "bbox": [
+        678,
+        556,
+        725,
+        593
+      ],
+      "confidence": 0.899,
+      "area": 1739,
+      "attributes": {
+        "size": "medium",
+        "material": "glass",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_4",
+      "type": "bounding_box",
+      "class": "cloth",
+      "bbox": [
+        72,
+        319,
+        117,
+        377
+      ],
+      "confidence": 0.797,
+      "area": 2610,
+      "attributes": {
+        "size": "small",
+        "material": "organic",
+        "severity": "high"
+      }
+    },
+    {
+      "id": "annotation_5",
+      "type": "bounding_box",
+      "class": "metal_can",
+      "bbox": [
+        1227,
+        620,
+        1257,
+        663
+      ],
+      "confidence": 0.904,
+      "area": 1290,
+      "attributes": {
+        "size": "large",
+        "material": "mixed",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_6",
+      "type": "bounding_box",
+      "class": "wood_debris",
+      "bbox": [
+        423,
+        934,
+        474,
+        973
+      ],
+      "confidence": 0.801,
+      "area": 1989,
+      "attributes": {
+        "size": "large",
+        "material": "mixed",
+        "severity": "high"
+      }
+    },
+    {
+      "id": "annotation_7",
+      "type": "bounding_box",
+      "class": "cloth",
+      "bbox": [
+        1290,
+        599,
+        1332,
+        620
+      ],
+      "confidence": 0.891,
+      "area": 882,
+      "attributes": {
+        "size": "medium",
+        "material": "metal",
+        "severity": "high"
+      }
+    },
+    {
+      "id": "annotation_8",
+      "type": "bounding_box",
+      "class": "fishing_gear",
+      "bbox": [
+        1062,
+        18,
+        1101,
+        77
+      ],
+      "confidence": 0.743,
+      "area": 2301,
+      "attributes": {
+        "size": "large",
+        "material": "mixed",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_9",
+      "type": "bounding_box",
+      "class": "plastic_bag",
+      "bbox": [
+        669,
+        947,
+        722,
+        985
+      ],
+      "confidence": 0.796,
+      "area": 2014,
+      "attributes": {
+        "size": "small",
+        "material": "organic",
+        "severity": "medium"
+      }
+    }
+  ],
+  "summary": {
+    "total_debris": 9,
+    "debris_types_count": {
+      "metal_can": 3,
+      "cloth": 3,
+      "wood_debris": 1,
+      "fishing_gear": 1,
+      "plastic_bag": 1
+    },
+    "total_area_covered": 18480,
+    "average_confidence": 0.85
+  }
+}

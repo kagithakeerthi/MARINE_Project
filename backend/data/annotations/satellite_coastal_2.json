@@ -1,0 +1,173 @@
+{
+  "image": {
+    "filename": "satellite_coastal_2.png",
+    "width": 1024,
+    "height": 768,
+    "timestamp": "2026-04-05T09:24:19.042312",
+    "location": {
+      "latitude": 73.432243,
+      "longitude": 154.349203,
+      "description": "Coastal area near Marina Beach"
+    }
+  },
+  "annotations": [
+    {
+      "id": "annotation_1",
+      "type": "bounding_box",
+      "class": "plastic_bag",
+      "bbox": [
+        817,
+        54,
+        859,
+        113
+      ],
+      "confidence": 0.826,
+      "area": 2478,
+      "attributes": {
+        "size": "medium",
+        "material": "organic",
+        "severity": "high"
+      }
+    },
+    {
+      "id": "annotation_2",
+      "type": "bounding_box",
+      "class": "foam",
+      "bbox": [
+        738,
+        293,
+        808,
+        342
+      ],
+      "confidence": 0.802,
+      "area": 3430,
+      "attributes": {
+        "size": "small",
+        "material": "glass",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_3",
+      "type": "bounding_box",
+      "class": "metal_can",
+      "bbox": [
+        525,
+        254,
+        595,
+        291
+      ],
+      "confidence": 0.75,
+      "area": 2590,
+      "attributes": {
+        "size": "large",
+        "material": "metal",
+        "severity": "high"
+      }
+    },
+    {
+      "id": "annotation_4",
+      "type": "bounding_box",
+      "class": "fishing_gear",
+      "bbox": [
+        640,
+        404,
+        675,
+        442
+      ],
+      "confidence": 0.764,
+      "area": 1330,
+      "attributes": {
+        "size": "small",
+        "material": "metal",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_5",
+      "type": "bounding_box",
+      "class": "cloth",
+      "bbox": [
+        266,
+        407,
+        290,
+        461
+      ],
+      "confidence": 0.725,
+      "area": 1296,
+      "attributes": {
+        "size": "small",
+        "material": "organic",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_6",
+      "type": "bounding_box",
+      "class": "glass_bottle",
+      "bbox": [
+        134,
+        150,
+        172,
+        210
+      ],
+      "confidence": 0.735,
+      "area": 2280,
+      "attributes": {
+        "size": "medium",
+        "material": "glass",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_7",
+      "type": "bounding_box",
+      "class": "fishing_gear",
+      "bbox": [
+        183,
+        433,
+        246,
+        483
+      ],
+      "confidence": 0.731,
+      "area": 3150,
+      "attributes": {
+        "size": "small",
+        "material": "organic",
+        "severity": "high"
+      }
+    },
+    {
+      "id": "annotation_8",
+      "type": "bounding_box",
+      "class": "wood_debris",
+      "bbox": [
+        599,
+        259,
+        662,
+        316
+      ],
+      "confidence": 0.932,
+      "area": 3591,
+      "attributes": {
+        "size": "large",
+        "material": "glass",
+        "severity": "high"
+      }
+    }
+  ],
+  "summary": {
+    "total_debris": 8,
+    "debris_types_count": {
+      "plastic_bag": 1,
+      "foam": 1,
+      "metal_can": 1,
+      "fishing_gear": 2,
+      "cloth": 1,
+      "glass_bottle": 1,
+      "wood_debris": 1
+    },
+    "total_area_covered": 20145,
+    "average_confidence": 0.783
+  }
+}

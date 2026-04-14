@@ -1,0 +1,198 @@
+{
+  "processing_metadata": {
+    "source_image": "drone_beach_close_1.png",
+    "processed_at": "2026-04-05T09:24:29.623051",
+    "processing_version": "1.0.0",
+    "model_version": "debris_detection_v2.1"
+  },
+  "detection_results": {
+    "total_detections": 11,
+    "confidence_threshold": 0.5,
+    "processing_time_seconds": 2.11
+  },
+  "debris_analysis": [
+    {
+      "id": "debris_001",
+      "type": "plastic_bottle",
+      "confidence": 0.919,
+      "bounding_box": {
+        "x1": 481,
+        "y1": 440,
+        "x2": 533,
+        "y2": 679
+      },
+      "area_pixels": 7332,
+      "estimated_size_cm": 16.1,
+      "material_confidence": 0.818,
+      "environmental_impact": "medium",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_002",
+      "type": "wood_debris",
+      "confidence": 0.971,
+      "bounding_box": {
+        "x1": 815,
+        "y1": 271,
+        "x2": 242,
+        "y2": 66
+      },
+      "area_pixels": 1608,
+      "estimated_size_cm": 29.0,
+      "material_confidence": 0.907,
+      "environmental_impact": "high",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_003",
+      "type": "metal_can",
+      "confidence": 0.769,
+      "bounding_box": {
+        "x1": 508,
+        "y1": 295,
+        "x2": 499,
+        "y2": 684
+      },
+      "area_pixels": 2851,
+      "estimated_size_cm": 23.5,
+      "material_confidence": 0.832,
+      "environmental_impact": "medium",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_004",
+      "type": "glass_bottle",
+      "confidence": 0.66,
+      "bounding_box": {
+        "x1": 734,
+        "y1": 397,
+        "x2": 811,
+        "y2": 295
+      },
+      "area_pixels": 3911,
+      "estimated_size_cm": 7.7,
+      "material_confidence": 0.705,
+      "environmental_impact": "medium",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_005",
+      "type": "glass_bottle",
+      "confidence": 0.768,
+      "bounding_box": {
+        "x1": 5,
+        "y1": 233,
+        "x2": 357,
+        "y2": 163
+      },
+      "area_pixels": 4244,
+      "estimated_size_cm": 25.7,
+      "material_confidence": 0.87,
+      "environmental_impact": "critical",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_006",
+      "type": "metal_can",
+      "confidence": 0.773,
+      "bounding_box": {
+        "x1": 788,
+        "y1": 443,
+        "x2": 465,
+        "y2": 399
+      },
+      "area_pixels": 1270,
+      "estimated_size_cm": 17.7,
+      "material_confidence": 0.892,
+      "environmental_impact": "medium",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_007",
+      "type": "plastic_bag",
+      "confidence": 0.606,
+      "bounding_box": {
+        "x1": 462,
+        "y1": 559,
+        "x2": 383,
+        "y2": 388
+      },
+      "area_pixels": 3446,
+      "estimated_size_cm": 14.0,
+      "material_confidence": 0.724,
+      "environmental_impact": "low",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_008",
+      "type": "wood_debris",
+      "confidence": 0.739,
+      "bounding_box": {
+        "x1": 938,
+        "y1": 615,
+        "x2": 727,
+        "y2": 447
+      },
+      "area_pixels": 3686,
+      "estimated_size_cm": 47.7,
+      "material_confidence": 0.773,
+      "environmental_impact": "low",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_009",
+      "type": "plastic_bag",
+      "confidence": 0.852,
+      "bounding_box": {
+        "x1": 119,
+        "y1": 47,
+        "x2": 818,
+        "y2": 312
+      },
+      "area_pixels": 6547,
+      "estimated_size_cm": 8.0,
+      "material_confidence": 0.728,
+      "environmental_impact": "medium",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_010",
+      "type": "foam",
+      "confidence": 0.894,
+      "bounding_box": {
+        "x1": 73,
+        "y1": 561,
+        "x2": 681,
+        "y2": 188
+      },
+      "area_pixels": 1597,
+      "estimated_size_cm": 49.6,
+      "material_confidence": 0.76,
+      "environmental_impact": "critical",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_011",
+      "type": "plastic_bag",
+      "confidence": 0.824,
+      "bounding_box": {
+        "x1": 503,
+        "y1": 257,
+        "x2": 698,
+        "y2": 144
+      },
+      "area_pixels": 3132,
+      "estimated_size_cm": 17.7,
+      "material_confidence": 0.923,
+      "environmental_impact": "critical",
+      "biodegradable": false
+    }
+  ],
+  "statistics": {
+    "debris_density": 14.32,
+    "dominant_type": "plastic_bag",
+    "average_confidence": 0.798,
+    "total_area_covered_m2": 396.24,
+    "severity_score": 7.9
+  }
+}

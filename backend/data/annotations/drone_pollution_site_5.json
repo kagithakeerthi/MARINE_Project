@@ -1,0 +1,79 @@
+{
+  "image": {
+    "filename": "drone_pollution_site_5.png",
+    "width": 1920,
+    "height": 1080,
+    "timestamp": "2026-04-05T09:24:19.051898",
+    "location": {
+      "latitude": -78.04595,
+      "longitude": 125.072503,
+      "description": "Coastal area near Malibu"
+    }
+  },
+  "annotations": [
+    {
+      "id": "annotation_1",
+      "type": "bounding_box",
+      "class": "plastic_bottle",
+      "bbox": [
+        142,
+        39,
+        167,
+        75
+      ],
+      "confidence": 0.976,
+      "area": 900,
+      "attributes": {
+        "size": "large",
+        "material": "glass",
+        "severity": "high"
+      }
+    },
+    {
+      "id": "annotation_2",
+      "type": "bounding_box",
+      "class": "glass_bottle",
+      "bbox": [
+        1197,
+        647,
+        1236,
+        678
+      ],
+      "confidence": 0.805,
+      "area": 1209,
+      "attributes": {
+        "size": "medium",
+        "material": "metal",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_3",
+      "type": "bounding_box",
+      "class": "wood_debris",
+      "bbox": [
+        384,
+        701,
+        421,
+        739
+      ],
+      "confidence": 0.92,
+      "area": 1406,
+      "attributes": {
+        "size": "medium",
+        "material": "organic",
+        "severity": "high"
+      }
+    }
+  ],
+  "summary": {
+    "total_debris": 3,
+    "debris_types_count": {
+      "plastic_bottle": 1,
+      "glass_bottle": 1,
+      "wood_debris": 1
+    },
+    "total_area_covered": 3515,
+    "average_confidence": 0.9
+  }
+}

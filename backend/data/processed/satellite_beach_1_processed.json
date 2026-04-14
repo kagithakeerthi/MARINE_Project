@@ -1,0 +1,310 @@
+{
+  "processing_metadata": {
+    "source_image": "satellite_beach_1.png",
+    "processed_at": "2026-04-05T09:24:29.621032",
+    "processing_version": "1.0.0",
+    "model_version": "debris_detection_v2.1"
+  },
+  "detection_results": {
+    "total_detections": 18,
+    "confidence_threshold": 0.5,
+    "processing_time_seconds": 1.69
+  },
+  "debris_analysis": [
+    {
+      "id": "debris_001",
+      "type": "foam",
+      "confidence": 0.957,
+      "bounding_box": {
+        "x1": 772,
+        "y1": 522,
+        "x2": 560,
+        "y2": 129
+      },
+      "area_pixels": 4291,
+      "estimated_size_cm": 23.8,
+      "material_confidence": 0.901,
+      "environmental_impact": "medium",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_002",
+      "type": "cloth",
+      "confidence": 0.789,
+      "bounding_box": {
+        "x1": 316,
+        "y1": 421,
+        "x2": 1022,
+        "y2": 647
+      },
+      "area_pixels": 5871,
+      "estimated_size_cm": 18.1,
+      "material_confidence": 0.841,
+      "environmental_impact": "critical",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_003",
+      "type": "fishing_gear",
+      "confidence": 0.753,
+      "bounding_box": {
+        "x1": 451,
+        "y1": 700,
+        "x2": 1028,
+        "y2": 69
+      },
+      "area_pixels": 1156,
+      "estimated_size_cm": 11.4,
+      "material_confidence": 0.837,
+      "environmental_impact": "high",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_004",
+      "type": "plastic_bottle",
+      "confidence": 0.864,
+      "bounding_box": {
+        "x1": 699,
+        "y1": 370,
+        "x2": 491,
+        "y2": 82
+      },
+      "area_pixels": 819,
+      "estimated_size_cm": 21.7,
+      "material_confidence": 0.724,
+      "environmental_impact": "high",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_005",
+      "type": "foam",
+      "confidence": 0.777,
+      "bounding_box": {
+        "x1": 899,
+        "y1": 510,
+        "x2": 573,
+        "y2": 426
+      },
+      "area_pixels": 777,
+      "estimated_size_cm": 41.5,
+      "material_confidence": 0.85,
+      "environmental_impact": "critical",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_006",
+      "type": "cloth",
+      "confidence": 0.709,
+      "bounding_box": {
+        "x1": 477,
+        "y1": 527,
+        "x2": 643,
+        "y2": 91
+      },
+      "area_pixels": 5084,
+      "estimated_size_cm": 42.8,
+      "material_confidence": 0.733,
+      "environmental_impact": "high",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_007",
+      "type": "cloth",
+      "confidence": 0.789,
+      "bounding_box": {
+        "x1": 147,
+        "y1": 321,
+        "x2": 292,
+        "y2": 86
+      },
+      "area_pixels": 2247,
+      "estimated_size_cm": 34.1,
+      "material_confidence": 0.735,
+      "environmental_impact": "medium",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_008",
+      "type": "metal_can",
+      "confidence": 0.766,
+      "bounding_box": {
+        "x1": 871,
+        "y1": 398,
+        "x2": 291,
+        "y2": 83
+      },
+      "area_pixels": 4288,
+      "estimated_size_cm": 9.4,
+      "material_confidence": 0.922,
+      "environmental_impact": "low",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_009",
+      "type": "plastic_bag",
+      "confidence": 0.752,
+      "bounding_box": {
+        "x1": 971,
+        "y1": 149,
+        "x2": 841,
+        "y2": 47
+      },
+      "area_pixels": 4134,
+      "estimated_size_cm": 34.5,
+      "material_confidence": 0.896,
+      "environmental_impact": "medium",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_010",
+      "type": "foam",
+      "confidence": 0.804,
+      "bounding_box": {
+        "x1": 704,
+        "y1": 31,
+        "x2": 236,
+        "y2": 233
+      },
+      "area_pixels": 5175,
+      "estimated_size_cm": 40.3,
+      "material_confidence": 0.949,
+      "environmental_impact": "critical",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_011",
+      "type": "metal_can",
+      "confidence": 0.702,
+      "bounding_box": {
+        "x1": 159,
+        "y1": 110,
+        "x2": 935,
+        "y2": 398
+      },
+      "area_pixels": 7099,
+      "estimated_size_cm": 21.3,
+      "material_confidence": 0.926,
+      "environmental_impact": "medium",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_012",
+      "type": "plastic_bag",
+      "confidence": 0.825,
+      "bounding_box": {
+        "x1": 108,
+        "y1": 648,
+        "x2": 352,
+        "y2": 643
+      },
+      "area_pixels": 3846,
+      "estimated_size_cm": 41.7,
+      "material_confidence": 0.733,
+      "environmental_impact": "high",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_013",
+      "type": "glass_bottle",
+      "confidence": 0.621,
+      "bounding_box": {
+        "x1": 918,
+        "y1": 479,
+        "x2": 795,
+        "y2": 239
+      },
+      "area_pixels": 7595,
+      "estimated_size_cm": 32.3,
+      "material_confidence": 0.737,
+      "environmental_impact": "low",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_014",
+      "type": "cloth",
+      "confidence": 0.951,
+      "bounding_box": {
+        "x1": 200,
+        "y1": 296,
+        "x2": 328,
+        "y2": 202
+      },
+      "area_pixels": 6429,
+      "estimated_size_cm": 30.4,
+      "material_confidence": 0.767,
+      "environmental_impact": "critical",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_015",
+      "type": "glass_bottle",
+      "confidence": 0.707,
+      "bounding_box": {
+        "x1": 604,
+        "y1": 179,
+        "x2": 1004,
+        "y2": 742
+      },
+      "area_pixels": 3060,
+      "estimated_size_cm": 32.5,
+      "material_confidence": 0.704,
+      "environmental_impact": "critical",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_016",
+      "type": "fishing_gear",
+      "confidence": 0.912,
+      "bounding_box": {
+        "x1": 852,
+        "y1": 606,
+        "x2": 102,
+        "y2": 115
+      },
+      "area_pixels": 6290,
+      "estimated_size_cm": 35.4,
+      "material_confidence": 0.825,
+      "environmental_impact": "medium",
+      "biodegradable": false
+    },
+    {
+      "id": "debris_017",
+      "type": "fishing_gear",
+      "confidence": 0.752,
+      "bounding_box": {
+        "x1": 784,
+        "y1": 360,
+        "x2": 451,
+        "y2": 456
+      },
+      "area_pixels": 1898,
+      "estimated_size_cm": 39.5,
+      "material_confidence": 0.788,
+      "environmental_impact": "critical",
+      "biodegradable": true
+    },
+    {
+      "id": "debris_018",
+      "type": "cloth",
+      "confidence": 0.752,
+      "bounding_box": {
+        "x1": 375,
+        "y1": 305,
+        "x2": 908,
+        "y2": 146
+      },
+      "area_pixels": 7072,
+      "estimated_size_cm": 11.8,
+      "material_confidence": 0.706,
+      "environmental_impact": "low",
+      "biodegradable": false
+    }
+  ],
+  "statistics": {
+    "debris_density": 23.44,
+    "dominant_type": "cloth",
+    "average_confidence": 0.788,
+    "total_area_covered_m2": 771.31,
+    "severity_score": 1.7
+  }
+}

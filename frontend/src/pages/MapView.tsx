@@ -9,10 +9,11 @@ import {
   Layers,
   Filter,
 } from 'lucide-react';
+import type { Beach } from '../data/beaches';
 import { WORLDWIDE_BEACHES, generateSatelliteDebrisData, getGlobalStats, getAllWaterbodyTypes, getWaterbodyType } from '../data/beaches';
 
 const MapView: React.FC = () => {
-  const [selectedBeach, setSelectedBeach] = useState<any>(null);
+  const [selectedBeach, setSelectedBeach] = useState<Beach | null>(null);
   const [zoom, setZoom] = useState(3);
   const [showLayers, setShowLayers] = useState({
     beaches: true,

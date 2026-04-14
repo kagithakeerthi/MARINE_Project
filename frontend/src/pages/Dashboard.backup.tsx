@@ -56,8 +56,17 @@ const StatCard: React.FC<{
 );
 
 // Real-time Wave Widget
+
+type WaveData = {
+  wave_height?: number;
+  wave_direction?: number;
+  wind_speed?: number;
+  sea_surface_temperature?: number;
+  [key: string]: unknown;
+};
+
 const WaveWidget: React.FC = () => {
-  const [waveData, setWaveData] = useState<any>(null);
+  const [waveData, setWaveData] = useState<WaveData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -245,9 +254,19 @@ const EcosystemPieChart: React.FC = () => {
   );
 };
 
+type AlertItem = {
+  id: string;
+  location?: {
+    lat?: number;
+    lon?: number;
+  };
+  message: string;
+  severity: 'low' | 'medium' | 'high';
+};
+
 // Recent Alerts Widget
 const RecentAlertsWidget: React.FC = () => {
-  const [alerts, setAlerts] = useState<any[]>([]);
+  const [alerts, setAlerts] = useState<AlertItem[]>([]);
 
   useEffect(() => {
     const fetchAlerts = async () => {

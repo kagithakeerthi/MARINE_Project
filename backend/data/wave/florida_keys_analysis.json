@@ -1,0 +1,102 @@
+{
+  "location": "Florida Keys",
+  "analysis_period": {
+    "start": "2026-03-29T09:24:47.718220",
+    "end": "2026-04-05T09:24:47.718233"
+  },
+  "wave_statistics": {
+    "average_height": 1.33,
+    "max_height": 6.25,
+    "dominant_period": 12.8,
+    "wave_energy": 5457.0,
+    "storm_probability": 0.1
+  },
+  "risk_assessment": {
+    "debris_transport_risk": "high",
+    "coastal_erosion_risk": "low",
+    "navigation_risk": "medium",
+    "overall_risk_score": 7.2
+  },
+  "forecast": [
+    {
+      "date": "2026-04-05",
+      "wave_height_range": {
+        "min": 1.1,
+        "max": 2.8
+      },
+      "wind_conditions": {
+        "speed_range": {
+          "min": 12.5,
+          "max": 22.3
+        },
+        "direction": 272
+      },
+      "weather_impact": "moderate",
+      "debris_dispersion_probability": 0.32
+    },
+    {
+      "date": "2026-04-06",
+      "wave_height_range": {
+        "min": 0.9,
+        "max": 4.4
+      },
+      "wind_conditions": {
+        "speed_range": {
+          "min": 12.5,
+          "max": 24.9
+        },
+        "direction": 226
+      },
+      "weather_impact": "calm",
+      "debris_dispersion_probability": 0.2
+    },
+    {
+      "date": "2026-04-07",
+      "wave_height_range": {
+        "min": 1.0,
+        "max": 4.2
+      },
+      "wind_conditions": {
+        "speed_range": {
+          "min": 8.4,
+          "max": 22.6
+        },
+        "direction": 263
+      },
+      "weather_impact": "calm",
+      "debris_dispersion_probability": 0.45
+    },
+    {
+      "date": "2026-04-08",
+      "wave_height_range": {
+        "min": 1.5,
+        "max": 4.0
+      },
+      "wind_conditions": {
+        "speed_range": {
+          "min": 13.1,
+          "max": 22.0
+        },
+        "direction": 218
+      },
+      "weather_impact": "rough",
+      "debris_dispersion_probability": 0.88
+    },
+    {
+      "date": "2026-04-09",
+      "wave_height_range": {
+        "min": 1.2,
+        "max": 4.2
+      },
+      "wind_conditions": {
+        "speed_range": {
+          "min": 11.9,
+          "max": 26.3
+        },
+        "direction": 263
+      },
+      "weather_impact": "moderate",
+      "debris_dispersion_probability": 0.33
+    }
+  ]
+}

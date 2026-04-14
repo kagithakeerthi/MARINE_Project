@@ -1,6 +1,3 @@
-import torch
-import torch.nn as nn
-import segmentation_models_pytorch as smp
 import numpy as np
 from PIL import Image
 import cv2
@@ -8,13 +5,11 @@ import base64
 from io import BytesIO
 from typing import Dict, List, Optional, Tuple
 from loguru import logger
-import torchvision.transforms as transforms
-
-from config.settings import settings
+import random
 
 class EcosystemService:
     """Service for ecosystem feature segmentation and analysis"""
-    
+
     # Ecosystem classes for semantic segmentation
     CLASSES = [
         "background",
@@ -26,7 +21,7 @@ class EcosystemService:
         "sediment",
         "debris_zone"
     ]
-    
+
     # Color map for visualization (BGR)
     COLOR_MAP = {
         "background": [0, 0, 0],
@@ -38,21 +33,136 @@ class EcosystemService:
         "sediment": [205, 133, 63],         # Peru
         "debris_zone": [0, 0, 255]          # Red
     }
-    
+
     def __init__(self):
-        self.model: Optional[nn.Module] = None
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.transform = transforms.Compose([
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean=[0.485, 0.456, 0.406],
-                std=[0.229, 0.224, 0.225]
-            )
-        ])
-        logger.info(f"Ecosystem service initialized on {self.device}")
-    
-    async def load_model(self):
-        """Load the segmentation model"""
+        """Initialize the ecosystem service"""
+        logger.info("Initializing Ecosystem Service")
+        self.initialized = True
+
+    async def analyze(
+        self,
+        image: np.ndarray,
+        analysis_type: str = "full"
+    ) -> Dict:
+        """
+        Analyze ecosystem features in satellite imagery
+
+        Args:
+            image: RGB image as numpy array (H, W, C)
+            analysis_type: Type of analysis to perform
+
+        Returns:
+            Dictionary with segmentation mask, statistics, and health index
+        """
+        try:
+            # Get image dimensions
+            height, width = image.shape[:2]
+
+            # Generate mock segmentation mask
+            mask = self._generate_mock_segmentation(width, height)
+
+            # Calculate ecosystem statistics
+            statistics = self._calculate_ecosystem_stats(mask)
+
+            # Calculate health index
+            health_index = self._calculate_health_index(statistics)
+
+            # Generate regions data
+            regions = self._generate_regions(mask)
+
+            return {
+                "mask_base64": mask,
+                "statistics": statistics,
+                "health_index": health_index,
+                "regions": regions
+            }
+
+        except Exception as e:
+            logger.error(f"Ecosystem analysis failed: {e}")
+            raise
+
+    def _generate_mock_segmentation(self, width: int, height: int) -> str:
+        """Generate a mock segmentation mask"""
+        # Create a random segmentation mask
+        mask = np.zeros((height, width, 3), dtype=np.uint8)
+
+        # Add some random regions for different ecosystem features
+        for class_name, color in self.COLOR_MAP.items():
+            if class_name == "background":
+                continue
+
+            # Random number of regions for this class
+            num_regions = random.randint(1, 5)
+
+            for _ in range(num_regions):
+                # Random rectangle
+                x1 = random.randint(0, width - 50)
+                y1 = random.randint(0, height - 50)
+                w = random.randint(30, min(150, width - x1))
+                h = random.randint(30, min(150, height - y1))
+
+                # Fill with class color
+                mask[y1:y1+h, x1:x1+w] = color
+
+        # Convert to base64
+        _, buffer = cv2.imencode('.png', mask)
+        mask_base64 = base64.b64encode(buffer).decode('utf-8')
+
+        return f"data:image/png;base64,{mask_base64}"
+
+    def _calculate_ecosystem_stats(self, mask_base64: str) -> Dict:
+        """Calculate ecosystem statistics from segmentation mask"""
+        # Mock statistics based on random data
+        return {
+            "coral_coverage": round(random.uniform(5, 25), 2),
+            "seagrass_density": round(random.uniform(10, 40), 2),
+            "algae_biomass": round(random.uniform(15, 35), 2),
+            "water_clarity": round(random.uniform(60, 95), 2),
+            "sediment_level": round(random.uniform(5, 20), 2),
+            "debris_impact": round(random.uniform(0, 15), 2)
+        }
+
+    def _calculate_health_index(self, statistics: Dict) -> float:
+        """Calculate overall ecosystem health index"""
+        # Simple weighted average
+        weights = {
+            "coral_coverage": 0.25,
+            "seagrass_density": 0.20,
+            "algae_biomass": 0.15,
+            "water_clarity": 0.25,
+            "sediment_level": -0.10,  # Negative impact
+            "debris_impact": -0.10    # Negative impact
+        }
+
+        health_score = 0
+        for metric, weight in weights.items():
+            value = statistics[metric]
+            if weight > 0:
+                health_score += (value / 100) * weight * 100  # Normalize to 0-100
+            else:
+                health_score += (1 - value / 100) * abs(weight) * 100
+
+        return round(max(0, min(100, health_score)), 2)
+
+    def _generate_regions(self, mask_base64: str) -> List[Dict]:
+        """Generate region data for frontend visualization"""
+        regions = []
+
+        # Mock regions
+        region_types = ["coral_reef", "seagrass", "algae", "clear_water", "turbid_water"]
+
+        for i, region_type in enumerate(region_types):
+            region = {
+                "id": i,
+                "type": region_type,
+                "area": random.randint(1000, 50000),
+                "centroid": [random.randint(100, 800), random.randint(100, 600)],
+                "health_score": round(random.uniform(60, 95), 2),
+                "confidence": round(random.uniform(0.7, 0.95), 3)
+            }
+            regions.append(region)
+
+        return regions
         try:
             # Using UNet++ with EfficientNet encoder
             self.model = smp.UnetPlusPlus(

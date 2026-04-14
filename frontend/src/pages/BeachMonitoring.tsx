@@ -19,82 +19,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-
-// Beach database
-const BEACHES_DB = [
-  {
-    id: 'beach_001',
-    name: 'Marina Beach',
-    city: 'Chennai',
-    coordinates: { lat: 13.0499, lon: 80.2819 },
-    area: 13,
-    riskLevel: 'high',
-    lastUpdated: '2 hours ago',
-  },
-  {
-    id: 'beach_002',
-    name: 'Kovalam Beach',
-    city: 'Thiruvananthapuram',
-    coordinates: { lat: 8.4244, lon: 76.9309 },
-    area: 8,
-    riskLevel: 'medium',
-    lastUpdated: '1 hour ago',
-  },
-  {
-    id: 'beach_003',
-    name: 'Goa Golden Beach',
-    city: 'Goa',
-    coordinates: { lat: 15.3408, lon: 73.8362 },
-    area: 6.5,
-    riskLevel: 'low',
-    lastUpdated: '30 mins ago',
-  },
-  {
-    id: 'beach_004',
-    name: 'Worli Beach',
-    city: 'Mumbai',
-    coordinates: { lat: 19.0136, lon: 72.8142 },
-    area: 12,
-    riskLevel: 'critical',
-    lastUpdated: '15 mins ago',
-  },
-  {
-    id: 'beach_005',
-    name: 'Radhanagar Beach',
-    city: 'Andaman',
-    coordinates: { lat: 11.6457, lon: 92.2506 },
-    area: 4.2,
-    riskLevel: 'low',
-    lastUpdated: '45 mins ago',
-  },
-  {
-    id: 'beach_006',
-    name: 'Alibag Beach',
-    city: 'Maharashtra',
-    coordinates: { lat: 18.6392, lon: 72.8762 },
-    area: 9,
-    riskLevel: 'medium',
-    lastUpdated: '3 hours ago',
-  },
-  {
-    id: 'beach_007',
-    name: 'Calangute Beach',
-    city: 'Goa',
-    coordinates: { lat: 15.4909, lon: 73.7618 },
-    area: 7,
-    riskLevel: 'medium',
-    lastUpdated: '1 hour ago',
-  },
-  {
-    id: 'beach_008',
-    name: 'Ashvem Beach',
-    city: 'Goa',
-    coordinates: { lat: 15.6333, lon: 73.7333 },
-    area: 5,
-    riskLevel: 'low',
-    lastUpdated: '2 hours ago',
-  },
-];
+import { WORLDWIDE_BEACHES } from '../data/beaches';
+import type { Beach } from '../data/beaches';
 
 // Mock debris data per beach
 const generateBeachDebrisData = (beachId: string) => {
@@ -105,7 +31,7 @@ const generateBeachDebrisData = (beachId: string) => {
     low: 8,
   };
 
-  const beach = BEACHES_DB.find((b) => b.id === beachId);
+  const beach = WORLDWIDE_BEACHES.find((b) => b.id === beachId);
   const riskLevel = beach?.riskLevel || 'medium';
   const debrisCount = riskMap[riskLevel] + Math.floor(Math.random() * 10);
 
@@ -137,7 +63,7 @@ const generateBeachDebrisData = (beachId: string) => {
 };
 
 const BeachCard: React.FC<{
-  beach: (typeof BEACHES_DB)[0];
+  beach: Beach;
   isSelected: boolean;
   onClick: () => void;
 }> = ({ beach, isSelected, onClick }) => {
@@ -229,15 +155,15 @@ const BeachCard: React.FC<{
 
       {/* Info */}
       <div className="flex items-center justify-between text-xs">
-        <span className="text-white/50">📍 {beach.coordinates.lat.toFixed(2)}°N, {beach.coordinates.lon.toFixed(2)}°E</span>
-        <span className="text-white/50">Updated {beach.lastUpdated}</span>
+        <span className="text-white/50">📍 {beach.lat.toFixed(2)}°N, {beach.lon.toFixed(2)}°E</span>
+        <span className="text-white/50">High Priority</span>
       </div>
     </motion.div>
   );
 };
 
 const BeachDetailsPanel: React.FC<{
-  beach: (typeof BEACHES_DB)[0];
+  beach: Beach;
 }> = ({ beach }) => {
   const debrisData = generateBeachDebrisData(beach.id);
 
@@ -399,22 +325,22 @@ const BeachDetailsPanel: React.FC<{
       <div className="bg-white/5 p-4 rounded-xl text-sm">
         <p className="text-white/60 mb-1">📍 Coordinates</p>
         <p className="font-mono text-ocean-300">
-          {beach.coordinates.lat.toFixed(4)}° N, {beach.coordinates.lon.toFixed(4)}° E
+          {beach.lat.toFixed(4)}° N, {beach.lon.toFixed(4)}° E
         </p>
-        <p className="text-white/60 mt-2">Last Updated</p>
-        <p className="text-seagrass-300">{beach.lastUpdated}</p>
+        <p className="text-white/60 mt-2">Monitoring Status</p>
+        <p className="text-seagrass-300">Active & Real-time</p>
       </div>
     </motion.div>
   );
 };
 
 const BeachMonitoring: React.FC = () => {
-  const [selectedBeach, setSelectedBeach] = useState(BEACHES_DB[0]);
+  const [selectedBeach, setSelectedBeach] = useState(WORLDWIDE_BEACHES[0]);
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredBeaches = useMemo(
     () =>
-      BEACHES_DB.filter(
+      WORLDWIDE_BEACHES.filter(
         (beach) =>
           beach.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           beach.city.toLowerCase().includes(searchQuery.toLowerCase())
@@ -423,10 +349,10 @@ const BeachMonitoring: React.FC = () => {
   );
 
   const riskStats = {
-    critical: BEACHES_DB.filter((b) => b.riskLevel === 'critical').length,
-    high: BEACHES_DB.filter((b) => b.riskLevel === 'high').length,
-    medium: BEACHES_DB.filter((b) => b.riskLevel === 'medium').length,
-    low: BEACHES_DB.filter((b) => b.riskLevel === 'low').length,
+    critical: WORLDWIDE_BEACHES.filter((b) => b.riskLevel === 'critical').length,
+    high: WORLDWIDE_BEACHES.filter((b) => b.riskLevel === 'high').length,
+    medium: WORLDWIDE_BEACHES.filter((b) => b.riskLevel === 'medium').length,
+    low: WORLDWIDE_BEACHES.filter((b) => b.riskLevel === 'low').length,
   };
 
   return (
@@ -439,7 +365,7 @@ const BeachMonitoring: React.FC = () => {
           className="glass p-4 rounded-xl"
         >
           <p className="text-white/60 text-sm">Total Beaches</p>
-          <p className="text-3xl font-bold mt-1">{BEACHES_DB.length}</p>
+          <p className="text-3xl font-bold mt-1">{WORLDWIDE_BEACHES.length}</p>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

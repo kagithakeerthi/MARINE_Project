@@ -1,0 +1,97 @@
+{
+  "image": {
+    "filename": "drone_coastal_detailed_2.png",
+    "width": 1920,
+    "height": 1080,
+    "timestamp": "2026-04-05T09:24:19.047417",
+    "location": {
+      "latitude": -46.000447,
+      "longitude": -51.88672,
+      "description": "Coastal area near Bondi Beach"
+    }
+  },
+  "annotations": [
+    {
+      "id": "annotation_1",
+      "type": "bounding_box",
+      "class": "plastic_bottle",
+      "bbox": [
+        1789,
+        833,
+        1850,
+        871
+      ],
+      "confidence": 0.853,
+      "area": 2318,
+      "attributes": {
+        "size": "large",
+        "material": "glass",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_2",
+      "type": "bounding_box",
+      "class": "foam",
+      "bbox": [
+        1570,
+        151,
+        1617,
+        197
+      ],
+      "confidence": 0.823,
+      "area": 2162,
+      "attributes": {
+        "size": "large",
+        "material": "glass",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_3",
+      "type": "bounding_box",
+      "class": "wood_debris",
+      "bbox": [
+        1358,
+        551,
+        1390,
+        598
+      ],
+      "confidence": 0.933,
+      "area": 1504,
+      "attributes": {
+        "size": "medium",
+        "material": "organic",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_4",
+      "type": "bounding_box",
+      "class": "wood_debris",
+      "bbox": [
+        527,
+        941,
+        570,
+        975
+      ],
+      "confidence": 0.756,
+      "area": 1462,
+      "attributes": {
+        "size": "small",
+        "material": "organic",
+        "severity": "low"
+      }
+    }
+  ],
+  "summary": {
+    "total_debris": 4,
+    "debris_types_count": {
+      "plastic_bottle": 1,
+      "foam": 1,
+      "wood_debris": 2
+    },
+    "total_area_covered": 7446,
+    "average_confidence": 0.841
+  }
+}

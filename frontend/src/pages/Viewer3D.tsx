@@ -36,7 +36,7 @@ const Viewer3D: React.FC = () => {
   const [showTerrain, setShowTerrain] = useState(true);
   const [showWater, setShowWater] = useState(true);
   const [debrisPoints, setDebrisPoints] = useState<DebrisPoint[]>([]);
-  const [animationFrame, setAnimationFrame] = useState<number | null>(null);
+  const animationFrameRef = useRef<number | null>(null);
 
   // Generate 3D debris data
   useEffect(() => {
@@ -179,14 +179,14 @@ const Viewer3D: React.FC = () => {
     const animate = () => {
       render();
       const frame = requestAnimationFrame(animate);
-      setAnimationFrame(frame);
+      animationFrameRef.current = frame;
     };
 
     animate();
 
     return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
       }
     };
   }, [rotation, zoom, showDebris, showTerrain, showWater, debrisPoints, selectedBeach, isPlaying]);
@@ -249,7 +249,7 @@ const Viewer3D: React.FC = () => {
                 onChange={(e) => setSelectedBeach(WORLDWIDE_BEACHES.find(b => b.id === e.target.value) || WORLDWIDE_BEACHES[0])}
                 className="bg-slate-700/50 border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-purple-500/50"
               >
-                {WORLDWIDE_BEACHES.slice(0, 10).map(beach => (
+                {WORLDWIDE_BEACHES.map(beach => (
                   <option key={beach.id} value={beach.id} className="bg-slate-800">
                     {beach.name.split(',')[0]}
                   </option>

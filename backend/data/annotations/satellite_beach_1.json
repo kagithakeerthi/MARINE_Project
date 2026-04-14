@@ -1,0 +1,210 @@
+{
+  "image": {
+    "filename": "satellite_beach_1.png",
+    "width": 1024,
+    "height": 768,
+    "timestamp": "2026-04-05T09:24:19.040760",
+    "location": {
+      "latitude": 7.796013,
+      "longitude": 128.80204,
+      "description": "Coastal area near Florida Keys"
+    }
+  },
+  "annotations": [
+    {
+      "id": "annotation_1",
+      "type": "bounding_box",
+      "class": "foam",
+      "bbox": [
+        162,
+        538,
+        211,
+        598
+      ],
+      "confidence": 0.893,
+      "area": 2940,
+      "attributes": {
+        "size": "medium",
+        "material": "organic",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_2",
+      "type": "bounding_box",
+      "class": "plastic_bottle",
+      "bbox": [
+        743,
+        504,
+        768,
+        563
+      ],
+      "confidence": 0.77,
+      "area": 1475,
+      "attributes": {
+        "size": "medium",
+        "material": "mixed",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_3",
+      "type": "bounding_box",
+      "class": "wood_debris",
+      "bbox": [
+        710,
+        342,
+        743,
+        372
+      ],
+      "confidence": 0.7,
+      "area": 990,
+      "attributes": {
+        "size": "medium",
+        "material": "plastic",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_4",
+      "type": "bounding_box",
+      "class": "metal_can",
+      "bbox": [
+        294,
+        260,
+        340,
+        305
+      ],
+      "confidence": 0.927,
+      "area": 2070,
+      "attributes": {
+        "size": "medium",
+        "material": "glass",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_5",
+      "type": "bounding_box",
+      "class": "plastic_bag",
+      "bbox": [
+        870,
+        189,
+        928,
+        228
+      ],
+      "confidence": 0.77,
+      "area": 2262,
+      "attributes": {
+        "size": "medium",
+        "material": "metal",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_6",
+      "type": "bounding_box",
+      "class": "wood_debris",
+      "bbox": [
+        587,
+        649,
+        666,
+        687
+      ],
+      "confidence": 0.86,
+      "area": 3002,
+      "attributes": {
+        "size": "large",
+        "material": "metal",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_7",
+      "type": "bounding_box",
+      "class": "fishing_gear",
+      "bbox": [
+        525,
+        260,
+        603,
+        286
+      ],
+      "confidence": 0.83,
+      "area": 2028,
+      "attributes": {
+        "size": "large",
+        "material": "plastic",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_8",
+      "type": "bounding_box",
+      "class": "cloth",
+      "bbox": [
+        903,
+        542,
+        936,
+        563
+      ],
+      "confidence": 0.92,
+      "area": 693,
+      "attributes": {
+        "size": "medium",
+        "material": "organic",
+        "severity": "high"
+      }
+    },
+    {
+      "id": "annotation_9",
+      "type": "bounding_box",
+      "class": "glass_bottle",
+      "bbox": [
+        728,
+        182,
+        790,
+        211
+      ],
+      "confidence": 0.913,
+      "area": 1798,
+      "attributes": {
+        "size": "medium",
+        "material": "organic",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_10",
+      "type": "bounding_box",
+      "class": "metal_can",
+      "bbox": [
+        194,
+        79,
+        227,
+        128
+      ],
+      "confidence": 0.825,
+      "area": 1617,
+      "attributes": {
+        "size": "small",
+        "material": "glass",
+        "severity": "high"
+      }
+    }
+  ],
+  "summary": {
+    "total_debris": 10,
+    "debris_types_count": {
+      "foam": 1,
+      "plastic_bottle": 1,
+      "wood_debris": 2,
+      "metal_can": 2,
+      "plastic_bag": 1,
+      "fishing_gear": 1,
+      "cloth": 1,
+      "glass_bottle": 1
+    },
+    "total_area_covered": 18875,
+    "average_confidence": 0.841
+  }
+}

@@ -1,4 +1,9 @@
-type MessageHandler = (data: any) => void;
+type WebSocketMessage = {
+  type: string;
+  [key: string]: unknown;
+};
+
+type MessageHandler = (data: WebSocketMessage) => void;
 
 class WebSocketService {
   private ws: WebSocket | null = null;
@@ -25,8 +30,8 @@ class WebSocketService {
 
         this.ws.onmessage = (event) => {
           try {
-            const data = JSON.parse(event.data);
-            const type = data.type;
+            const data = JSON.parse(event.data) as WebSocketMessage;
+            const type = String(data.type);
             
             // Notify all handlers for this message type
             const typeHandlers = this.handlers.get(type);
@@ -83,7 +88,7 @@ class WebSocketService {
     });
   }
 
-  send(data: any): void {
+  send(data: WebSocketMessage): void {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
       this.ws.send(JSON.stringify(data));
     } else {

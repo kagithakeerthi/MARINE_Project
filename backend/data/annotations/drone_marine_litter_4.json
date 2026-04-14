@@ -1,0 +1,98 @@
+{
+  "image": {
+    "filename": "drone_marine_litter_4.png",
+    "width": 1920,
+    "height": 1080,
+    "timestamp": "2026-04-05T09:24:19.050349",
+    "location": {
+      "latitude": 48.420292,
+      "longitude": -155.967846,
+      "description": "Coastal area near Bondi Beach"
+    }
+  },
+  "annotations": [
+    {
+      "id": "annotation_1",
+      "type": "bounding_box",
+      "class": "metal_can",
+      "bbox": [
+        776,
+        511,
+        818,
+        545
+      ],
+      "confidence": 0.905,
+      "area": 1428,
+      "attributes": {
+        "size": "large",
+        "material": "organic",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_2",
+      "type": "bounding_box",
+      "class": "plastic_bag",
+      "bbox": [
+        659,
+        391,
+        685,
+        424
+      ],
+      "confidence": 0.742,
+      "area": 858,
+      "attributes": {
+        "size": "large",
+        "material": "metal",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_3",
+      "type": "bounding_box",
+      "class": "glass_bottle",
+      "bbox": [
+        1511,
+        112,
+        1562,
+        160
+      ],
+      "confidence": 0.956,
+      "area": 2448,
+      "attributes": {
+        "size": "large",
+        "material": "metal",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_4",
+      "type": "bounding_box",
+      "class": "plastic_bottle",
+      "bbox": [
+        533,
+        910,
+        574,
+        936
+      ],
+      "confidence": 0.878,
+      "area": 1066,
+      "attributes": {
+        "size": "large",
+        "material": "organic",
+        "severity": "medium"
+      }
+    }
+  ],
+  "summary": {
+    "total_debris": 4,
+    "debris_types_count": {
+      "metal_can": 1,
+      "plastic_bag": 1,
+      "glass_bottle": 1,
+      "plastic_bottle": 1
+    },
+    "total_area_covered": 5800,
+    "average_confidence": 0.87
+  }
+}

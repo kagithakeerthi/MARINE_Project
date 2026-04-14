@@ -33,4 +33,4 @@ export default {
     },
   },
   plugins: [],
-} as const
+} as Config

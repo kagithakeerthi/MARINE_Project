@@ -1,0 +1,133 @@
+{
+  "image": {
+    "filename": "satellite_ocean_3.png",
+    "width": 1024,
+    "height": 768,
+    "timestamp": "2026-04-05T09:24:19.043763",
+    "location": {
+      "latitude": 23.168783,
+      "longitude": 52.390491,
+      "description": "Coastal area near Malibu"
+    }
+  },
+  "annotations": [
+    {
+      "id": "annotation_1",
+      "type": "bounding_box",
+      "class": "glass_bottle",
+      "bbox": [
+        96,
+        254,
+        139,
+        282
+      ],
+      "confidence": 0.809,
+      "area": 1204,
+      "attributes": {
+        "size": "large",
+        "material": "mixed",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_2",
+      "type": "bounding_box",
+      "class": "glass_bottle",
+      "bbox": [
+        840,
+        392,
+        891,
+        419
+      ],
+      "confidence": 0.863,
+      "area": 1377,
+      "attributes": {
+        "size": "medium",
+        "material": "plastic",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_3",
+      "type": "bounding_box",
+      "class": "glass_bottle",
+      "bbox": [
+        439,
+        616,
+        467,
+        671
+      ],
+      "confidence": 0.793,
+      "area": 1540,
+      "attributes": {
+        "size": "medium",
+        "material": "glass",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_4",
+      "type": "bounding_box",
+      "class": "foam",
+      "bbox": [
+        656,
+        554,
+        700,
+        608
+      ],
+      "confidence": 0.827,
+      "area": 2376,
+      "attributes": {
+        "size": "large",
+        "material": "organic",
+        "severity": "medium"
+      }
+    },
+    {
+      "id": "annotation_5",
+      "type": "bounding_box",
+      "class": "glass_bottle",
+      "bbox": [
+        124,
+        650,
+        197,
+        697
+      ],
+      "confidence": 0.804,
+      "area": 3431,
+      "attributes": {
+        "size": "medium",
+        "material": "glass",
+        "severity": "low"
+      }
+    },
+    {
+      "id": "annotation_6",
+      "type": "bounding_box",
+      "class": "cloth",
+      "bbox": [
+        860,
+        427,
+        900,
+        460
+      ],
+      "confidence": 0.818,
+      "area": 1320,
+      "attributes": {
+        "size": "large",
+        "material": "mixed",
+        "severity": "medium"
+      }
+    }
+  ],
+  "summary": {
+    "total_debris": 6,
+    "debris_types_count": {
+      "glass_bottle": 4,
+      "foam": 1,
+      "cloth": 1
+    },
+    "total_area_covered": 11248,
+    "average_confidence": 0.819
+  }
+}
