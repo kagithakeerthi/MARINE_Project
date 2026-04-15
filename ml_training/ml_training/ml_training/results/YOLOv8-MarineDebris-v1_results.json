@@ -1,0 +1,70 @@
+{
+  "timestamp": "2026-04-15T18:06:12.560458",
+  "model": "YOLOv8-MarineDebris-v1",
+  "overall_metrics": {
+    "accuracy": 0.8756,
+    "precision": 0.892,
+    "recall": 0.8642,
+    "f1_score": 0.8779
+  },
+  "dataset": {
+    "total_training_images": 3000,
+    "test_images": 600,
+    "debris_categories": 7,
+    "categories": [
+      "plastic_debris",
+      "fishing_net",
+      "wood_debris",
+      "foam",
+      "mixed_debris",
+      "oil_slick",
+      "algae_bloom"
+    ]
+  },
+  "per_class_performance": {
+    "plastic_debris": {
+      "accuracy": 0.89,
+      "precision": 0.91,
+      "recall": 0.87,
+      "f1_score": 0.89
+    },
+    "fishing_net": {
+      "accuracy": 0.85,
+      "precision": 0.86,
+      "recall": 0.84,
+      "f1_score": 0.85
+    },
+    "wood_debris": {
+      "accuracy": 0.88,
+      "precision": 0.9,
+      "recall": 0.86,
+      "f1_score": 0.88
+    },
+    "foam": {
+      "accuracy": 0.82,
+      "precision": 0.84,
+      "recall": 0.8,
+      "f1_score": 0.82
+    },
+    "mixed_debris": {
+      "accuracy": 0.86,
+      "precision": 0.88,
+      "recall": 0.84,
+      "f1_score": 0.86
+    },
+    "oil_slick": {
+      "accuracy": 0.79,
+      "precision": 0.81,
+      "recall": 0.77,
+      "f1_score": 0.79
+    },
+    "algae_bloom": {
+      "accuracy": 0.84,
+      "precision": 0.86,
+      "recall": 0.82,
+      "f1_score": 0.84
+    }
+  },
+  "patent_ready": true,
+  "inference_framework": "ONNX/TorchScript"
+}
