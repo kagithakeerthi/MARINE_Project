@@ -4,12 +4,14 @@ Real-time system with YOLOv8 ML, satellite APIs, and wave data
 For patent publication deployment
 """
 import asyncio
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 import io
 import uuid
 from datetime import datetime, timedelta
+from typing import AsyncGenerator
 
 # Import production services (with fallback)
 PRODUCTION_SERVICES_AVAILABLE = False
@@ -28,40 +30,7 @@ except ImportError as e:
     from services.wave_service import WaveService
     from services.alert_service import AlertService
 
-# Initialize FastAPI
-app = FastAPI(
-    title="Marine Debris Monitoring - Production",
-    description="Real-time satellite-based debris detection",
-    version="1.0.0"
-)
-
-# Enable CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Load configuration
-if PRODUCTION_SERVICES_AVAILABLE:
-    settings = ProductionSettings()
-else:
-    # Create a basic settings object for fallback
-    class BasicSettings:
-        def __init__(self):
-            self.database_url = "sqlite:///./marine_debris.db"
-            self.model_path = "models/debris_detection/yolov8n.pt"
-            self.detection_device = "cpu"
-            self.wave_cache_ttl = 3600
-            self.copernicus_username = None
-            self.copernicus_password = None
-            self.usgs_username = None
-            self.usgs_password = None
-    settings = BasicSettings()
-
-# Global service instances
+# Global service instances (will be initialized during startup)
 detector = None
 satellite_service = None
 wave_service = None
@@ -69,16 +38,17 @@ db_service = None
 
 
 # ============================================================
-# Startup & Shutdown
+# Lifespan Context Manager (replaces on_event)
 # ============================================================
 
-@app.on_event("startup")
-async def startup_event():
-    """Initialize services on startup"""
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator:
+    """Handle startup and shutdown events"""
     global detector, satellite_service, wave_service, db_service, PRODUCTION_SERVICES_AVAILABLE
-
+    
+    # STARTUP
     logger.info("🚀 Starting Marine Debris Monitoring System")
-
+    
     if PRODUCTION_SERVICES_AVAILABLE:
         try:
             # Initialize ML detector
@@ -116,9 +86,58 @@ async def startup_event():
             await initialize_fallback_services()
     else:
         await initialize_fallback_services()
+    
+    yield
+    
+    # SHUTDOWN
+    logger.info("🛑 Shutting down Marine Debris Monitoring System")
+
+    if PRODUCTION_SERVICES_AVAILABLE:
+        if satellite_service:
+            await satellite_service.shutdown()
+        if wave_service:
+            await wave_service.shutdown()
+        if db_service:
+            await db_service.shutdown()
+
+    logger.info("Shutdown complete")
 
 
-async def initialize_fallback_services():
+# Initialize FastAPI with lifespan
+app = FastAPI(
+    title="Marine Debris Monitoring - Production",
+    description="Real-time satellite-based debris detection",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Load configuration
+if PRODUCTION_SERVICES_AVAILABLE:
+    settings = ProductionSettings()
+else:
+    # Create a basic settings object for fallback
+    class BasicSettings:
+        def __init__(self):
+            self.database_url = "sqlite:///./marine_debris.db"
+            self.model_path = "models/debris_detection/yolov8n.pt"
+            self.detection_device = "cpu"
+            self.wave_cache_ttl = 3600
+            self.copernicus_username = None
+            self.copernicus_password = None
+            self.usgs_username = None
+            self.usgs_password = None
+    settings = BasicSettings()
+
+async def initialize_fallback_services() -> None:
     """Initialize basic services when production services unavailable"""
     global detector, satellite_service, wave_service, db_service
 
@@ -133,24 +152,6 @@ async def initialize_fallback_services():
         logger.info("✅ Basic services initialized")
     except Exception as e:
         logger.error(f"Basic services failed: {e}")
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Cleanup on shutdown"""
-    global detector, satellite_service, wave_service, db_service
-
-    logger.info("🛑 Shutting down Marine Debris Monitoring System")
-
-    if PRODUCTION_SERVICES_AVAILABLE:
-        if satellite_service:
-            await satellite_service.shutdown()
-        if wave_service:
-            await wave_service.shutdown()
-        if db_service:
-            await db_service.shutdown()
-
-    logger.info("Shutdown complete")
 
 
 # ============================================================
